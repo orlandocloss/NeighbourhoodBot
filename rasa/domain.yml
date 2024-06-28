@@ -1,0 +1,245 @@
+version: '3.1'
+intents:
+  - action_intent
+  - action_option_selected
+  - general_action_intent
+  - general_problem_intent
+  - greet
+  - information_intent
+  - negative
+  - no_skills
+  - none_intent
+  - positive
+  - problem_intent
+  - report_intent
+  - skill_intent
+  - take_action_intent
+  - end_conversation
+  - loneliness_intent
+  - disconnection_intent
+  - start
+  - informed_response_intent
+  - action_response_intent
+  - specific_neighbourhood_intent
+  - capabilities_intent
+  - gratitude_intent
+  - out_of_scope
+responses:
+  utter_greet:
+  - text: Hey! I am a community organiser chatbot. Request information on neighbourhood queries or the importance of community connectedness; let me know a problem your having and we can either report it or take steps to actions ourselves; or let me know if you have any ideas, skills, interests or just generally want to take action and we can come up with initatives to better your community. 
+  - text: Hello! I'm your neighbourhood's community organiser chatbot. You can ask me for information about your neighbourhood or the importance of staying connected within your community. Share any issues you're facing, and we can report them or take action together. If you have ideas, skills, interests or want to get involved in making your community better, I'm here to help create initiatives to bring positive change.
+  - text: Hi there! I'm a community organiser chatbot here to assist you with neighbourhood information and fostering community connections. Whether you're dealing with a problem that needs reporting, looking to take action yourself, or simply have ideas to enhance your community, I'm here to help. Let's work together to make your neighbourhood a better and more connected place!
+  - text: Hey! I'm a chatbot dedicated to organising and improving community life. Ask me about your neighbourhood or how to build stronger community ties. If you're experiencing any issues, we can report them or find ways to resolve them together. Have ideas or want to take action? Let's brainstorm initiatives to enhance your community!
+  utter_general_problem:
+  - text: Of course, let me know your problem.
+  - text: Sure, tell me what the issue is.
+  - text: Absolutely, I'm here to help with any problem you have.
+  - text: Certainly, please describe your problem.
+  utter_problem:
+  - text: Do you want to take action yourself or report it anonymously to your local neighbourhood database?
+    buttons:
+    - title: Report
+      payload: /report_intent
+    - title: Take Action
+      payload: /take_action_intent
+    - title: None
+      payload: /none_intent
+  - text: Would you prefer to address the issue yourself or report it anonymously to your local neighbourhood database?
+    buttons:
+    - title: Report
+      payload: /report_intent
+    - title: Take Action
+      payload: /take_action_intent
+    - title: None
+      payload: /none_intent
+  - text: Do you want to work towards a solution yourself or add it anonymously to your local neighbourhood database?
+    buttons:
+    - title: Report
+      payload: /report_intent
+    - title: Take Action
+      payload: /take_action_intent
+    - title: None
+      payload: /none_intent
+  - text: Would you like to handle this yourself or report it anonymously to your local neighbourhood database?
+    buttons:
+    - title: Report
+      payload: /report_intent
+    - title: Take Action
+      payload: /take_action_intent
+    - title: None
+      payload: /none_intent
+  - text: Do you want to resolve this on your own or report it anonymously to your local neighbourhood database?
+    buttons:
+    - title: Report
+      payload: /report_intent
+    - title: Take Action
+      payload: /take_action_intent
+    - title: None
+      payload: /none_intent
+  utter_more:
+  - text: Is there anything else I can help you with?
+    buttons:
+    - title: No more help needed.
+      payload: /negative
+  - text: Do you need assistance with anything else?
+    buttons:
+    - title: No more help needed.
+      payload: /negative
+  - text: Can I help you with anything else?
+    buttons:
+    - title: No more help needed.
+      payload: /negative
+  - text: Is there anything more you need help with?
+    buttons:
+    - title: No more help needed.
+      payload: /negative
+  utter_encourage:
+  - text: Do you want to take action in your neighbourhood, and work towards some community initiatives?
+    buttons:
+    - title: Yes.
+      payload: /positive
+    - title: No.
+      payload: /negative
+  - text: Would you like to work on initiatives to better your neighbourhood?
+    buttons:
+    - title: Yes.
+      payload: /positive
+    - title: No.
+      payload: /negative
+  - text: Are you interested in taking action in your neighbourhood and working on community initiatives?
+    buttons:
+    - title: Yes.
+      payload: /positive
+    - title: No.
+      payload: /negative
+  - text: Do you want to get involved in improving your neighbourhood through community initiatives?
+    buttons:
+    - title: Yes.
+      payload: /positive
+    - title: No.
+      payload: /negative
+  utter_skills:
+  - text: Lets start by telling me if you have any skills or interests.
+    buttons:
+    - title: None
+      payload: /no_skills
+  - text: Let me know any skills or interests and we can look for a match.
+    buttons:
+    - title: None
+      payload: /no_skills
+  - text: Please tell me if you have any skills or interests and I can find a match.
+    buttons:
+    - title: None
+      payload: /no_skills
+  - text: Start by sharing any skills or interests you have.
+    buttons:
+    - title: None
+      payload: /no_skills
+  - text: Let me know if you have any skills or interests and we will try to find a good match.
+    buttons:
+    - title: None
+      payload: /no_skills
+  - text: Let me know any skills or interests and we can find a good match.
+    buttons:
+    - title: None
+      payload: /no_skills
+  utter_confused:
+  - text: Apologies, I seem to have got confused. Please let me know your queries; whether thats a request for information, guidance on how to take action, or wanting to discuss a problem. I am here to answer all your neighbourhood questions and help you come towards community building initiatives. If you want to end this conversation thats fine too.
+    buttons:
+    - title: End conversation
+      payload: /end_conversation
+  - text: Sorry, I seem to be a bit confused. Please let me know your questions, whether it's a request for information, guidance on taking action, or discussing a problem. I'm here to help with all your neighbourhood queries and assist in community building initiatives. If you'd like to end this conversation, that's okay too.
+    buttons:
+    - title: End conversation
+      payload: /end_conversation
+  - text: My apologies, I appear to be confused. Please let me know your queries, whether you're looking for information, guidance on taking action, or discussing a problem. I'm here to help with all your neighbourhood questions and support community building initiatives. If you want to end this conversation, that's fine too.
+    buttons:
+    - title: End conversation
+      payload: /end_conversation
+  utter_specific:
+  - text: Within my current capabilites, I do not have specific information on your neighbourhood such as population size, demographics, contact information or locations of services. I suggest you make a post on your digital platform.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  - text: Currently, I don't have specific information on your neighborhood, including population size, demographics, contact information, or service locations. Please consider posting on your digital platform for more details.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  - text: I’m unable to provide detailed information about your neighborhood, such as population statistics, demographic data, contact info, or service locations. You might want to post this question on your digital platform.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  - text: I don't have access to detailed neighborhood information such as population size, demographics, contact details, or service locations. You should try posting on your digital platform for assistance.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  - text: I am not equipped with detailed neighborhood information such as population size, demographics, contact info, or locations of services. Please consider posting on your digital platform for this information.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  - text: Unfortunately, I can't provide specific information on your neighborhood such as population size, demographics, contact details, or service locations. Please consider posting on your digital platform for this information.
+    buttons:
+    - title: Share a post
+      payload: Share a post
+  utter_gratitude:
+  - text: You are most welcome.
+  - text: Your welcome.
+  - text: No problem.
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+  - store-action-prompt
+  - llama-problem
+  - utter_more
+  - utter_greet
+  - utter_problem
+  - reset-and-restart
+  - llama-action-noskill
+  - store-selected-action
+  - action-handle-selected-option
+  - utter_skills
+  - llama-information
+  - llama-action
+  - report-problem
+  - search-problem
+  - llama-action-problem-skill
+  - action_default_fallback
+  - llama-loneliness
+  - llama-disconnection
+  - initialize_conversation
+  - handle-llama-informed-response
+  - handle-llama-action-response
+  - llama-capability
+slots:
+  action_prompt:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  selected_option:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  neighbour_problem_text:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  conversation_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  task_id:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  actions_classified:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom

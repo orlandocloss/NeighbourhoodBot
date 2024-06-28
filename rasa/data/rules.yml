@@ -1,0 +1,320 @@
+version: "3.1"
+
+rules:
+- rule: handle llama 1
+  steps:
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+- rule: handle llama 2
+  steps:
+    - intent: action_response_intent
+    - action: handle-llama-action-response
+- rule: intialise user
+  steps:
+    - intent: start
+    - action: initialize_conversation
+- rule: unrecognised greet
+  steps:
+    - intent: greet
+    - action: initialize_conversation
+    - action: utter_greet
+
+- rule: information followed by encourage
+  steps:
+    - action: llama-information
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_encourage
+
+- rule: capability followed by encourage
+  steps:
+    - action: llama-capability
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_encourage
+
+- rule: unrecognised capability intent
+  steps:
+    - intent: capabilities_intent
+    - action: llama-capability
+
+- rule: unrecognised information intent part 1
+  steps:
+    - intent: information_intent
+    - action: llama-information
+
+- rule: unrecognised information intent part 2
+  steps:
+    - action: llama-information
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_encourage
+
+- rule: unrecognised general action intent
+  steps:
+    - intent: general_action_intent
+    - action: utter_skills
+
+- rule: unrecognised action intent
+  steps:
+    - intent: action_intent
+    - action: store-action-prompt
+    - action: llama-action
+
+- rule: unrecognised problem intent part 1
+  steps:
+    - intent: problem_intent
+    - action: store-action-prompt
+    - action: llama-problem
+
+- rule: unrecognised problem intent part 2
+  steps:
+    - action: llama-problem
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_problem
+
+- rule: unrecognised general problem intent
+  steps:
+    - intent: general_problem_intent
+    - action: utter_general_problem
+
+- rule: no skills intent
+  steps:
+    - intent: no_skills
+    - action: llama-action-noskill
+
+- rule: selected option
+  steps:
+    - intent: action_option_selected
+    - action: store-selected-action
+    - action: action-handle-selected-option
+    - action: reset-and-restart
+
+- rule: none to utter problem part 1
+  steps:
+    - action: llama-problem
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_problem
+
+- rule: none to utter problem part 2
+  steps:
+    - action: utter_problem
+    - intent: none_intent
+    - action: utter_more
+
+- rule: report to utter problem part 1
+  steps:
+    - action: llama-problem
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_problem
+
+- rule: report to utter problem part 2
+  steps:
+    - action: utter_problem
+    - intent: report_intent
+    - action: report-problem
+    - action: utter_more
+
+- rule: end conversation
+  steps:
+    - intent: end_conversation
+    - action: reset-and-restart
+
+- rule: store skill 
+  steps:
+    - intent: skill_intent
+    - action: store-action-prompt
+    - action: search-problem
+    # - intent: positive
+    # - action: llama-action-problem-skill
+
+- rule: default
+  steps:
+    - action: action_default_fallback
+
+- rule: default end
+  steps:
+    - action: action_default_fallback
+    - intent: end_conversation
+    - action: reset-and-restart
+
+- rule: action to selected option
+  steps:
+    - action: llama-action
+    - intent: action_option_selected
+    - action: store-selected-action
+    - action: action-handle-selected-option
+    - action: reset-and-restart
+
+- rule: problem action to selected option
+  steps:
+    - action: llama-action-problem-skill
+    - intent: action_option_selected
+    - action: store-selected-action
+    - action: action-handle-selected-option
+    - action: reset-and-restart
+
+- rule: skill and problem rule
+  steps:
+    - action: search-problem
+    - intent: positive
+    - action: llama-action-problem-skill
+
+- rule: skill and no problem rule
+  steps:
+    - action: search-problem
+    - intent: negative
+    - action: llama-action
+
+- rule: encourage to skills
+  steps: 
+    - action: utter_encourage
+    - intent: positive 
+    - action: utter_skills
+
+- rule: not accepting of encouragement
+  steps:
+    - action: utter_encourage
+    - intent: negative
+    - action: utter_more
+
+- rule: no more restart
+  steps:
+    - action: utter_more
+    - intent: negative 
+    - action: reset-and-restart
+
+- rule: utter problem take action
+  steps:
+    - action: utter_problem
+    - intent: take_action_intent
+    - action: llama-action
+
+- rule: utter problem report 
+  steps: 
+    - action: utter_problem
+    - intent: report_intent
+    - action: report-problem #must take note of person reporting problem and id for later reference
+    - action: utter_more
+
+- rule: utter problem none
+  steps: 
+    - action: utter_problem
+    - intent: none_intent
+    - action: utter_more
+
+- rule: utter problem negative
+  steps:
+    - action: utter_problem
+    - intent: negative
+    - action: utter_more
+
+- rule: more? action
+  steps:
+    - action: utter_more
+    - intent: action_intent
+    - action: store-action-prompt
+    - action: llama-action
+
+- rule: more? general action
+  steps:
+    - action: utter_more
+    - intent: general_action_intent
+    - action: utter_skills
+
+- rule: more? problem
+  steps:
+    - action: utter_more
+    - intent: problem_intent
+    - action: store-action-prompt
+    - action: llama-problem
+    - action: utter_problem
+
+- rule: more? general problem
+  steps:
+    - action: utter_more
+    - intent: general_problem_intent
+    - action: utter_general_problem
+
+- rule: more? information
+  steps:
+    - action: utter_more
+    - intent: information_intent
+    - action: llama-information
+    - action: utter_encourage
+
+- rule: none? anything else?
+  steps: 
+    - intent: none_intent
+    - action: utter_more
+
+- rule: unrecognised loneliness intent part 1
+  steps:
+    - intent: loneliness_intent
+    - action: store-action-prompt
+    - action: llama-loneliness
+
+- rule: unrecognised loneliness intent part 2
+  steps:
+    - action: llama-loneliness
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_problem
+
+- rule: more? lonely part 1
+  steps:
+    - action: utter_more
+    - intent: loneliness_intent
+    - action: store-action-prompt
+    - action: llama-loneliness
+
+- rule: more? lonely part 1
+  steps:
+    - action: llama-loneliness
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_problem
+
+- rule: more? disconnection part 1
+  steps:
+    - action: utter_more
+    - intent: disconnection_intent
+    - action: llama-disconnection
+
+- rule: more? disconnection part 2
+  steps:
+    - action: llama-disconnection
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_encourage
+
+- rule: unrecognised disconnection intent part 1
+  steps:
+    - intent: disconnection_intent
+    - action: llama-disconnection
+
+- rule: unrecognised disconnection intent part 2
+  steps:
+    - action: llama-disconnection
+    - intent: informed_response_intent
+    - action: handle-llama-informed-response
+    - action: utter_encourage
+
+- rule: specific_neighbourhood_info
+  steps:
+    - intent: specific_neighbourhood_intent
+    - action: utter_specific
+
+- rule: gratitude
+  steps:
+    - intent: gratitude_intent
+    - action: utter_gratitude
+    - action: utter_more
+
+- rule: Handle out of scope messages
+  steps:
+    - intent: out_of_scope
+    - action: action_default_fallback

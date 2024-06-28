@@ -1,0 +1,2259 @@
+version: "3.1"
+
+stories:
+
+#start 
+
+#skill paths
+- story: skills and problem #tested
+  steps: 
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no problem #tested
+  steps: 
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no matching problem #tested
+  steps: 
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+  #action paths
+
+- story: action path #tested
+  steps: 
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: action_intent
+  - action: store-action-prompt
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (skill and problem) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill no matching problems) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (no skill) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+  #information paths
+
+- story: information path (yes to action - skill and problem) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill no matching problems) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action, no to skills) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (no to action) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation
+
+  #problem paths
+
+- story: problem path (action) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (action) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (report) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (report) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (none) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (none) #tested 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: problem path (negative) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (negative) #tested
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+  # SAME PATHS WITHOUT GREET
+
+  #skill paths
+
+- story: skills and problem NO GREET #tested
+  steps: 
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no problem NO GREET
+  steps: 
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no matching problem NO GREET
+  steps: 
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+
+  #action paths
+
+- story: action path NO GREET
+  steps: 
+  - intent: action_intent
+  - action: store-action-prompt
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (skill and problem) NO GREET
+  steps:
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill) NO GREET
+  steps:
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill no matching problems) NO GREET
+  steps:
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (no skill) NO GREET
+  steps:
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+  #information paths
+
+- story: information path (yes to action - skill and problem) NO GREET
+  steps:
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill) NO GREET
+  steps:
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill no matching problems) NO GREET
+  steps:
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action, no to skills) NO GREET
+  steps:
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (no to action) NO GREET
+  steps:
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation
+
+  #problem paths
+
+- story: problem path (action) NO GREET
+  steps:
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (action) NO GREET
+  steps:
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (report) NO GREET
+  steps:
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (report) NO GREET
+  steps:
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (none) NO GREET
+  steps:
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (none) NO GREET
+  steps:
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: problem path (negative) NO GREET
+  steps:
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (negative) NO GREET
+  steps:
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+  #interactive
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - slot_was_set:
+    - selected_option: Start/join a group
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+
+- story: interactive_story_2
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - slot_was_set:
+    - action_prompt: I need a girl support group for my period
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+  #lonely paths
+
+- story: lonely path (action) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+
+- story: lonely path (report) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: lonely path (none) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+
+- story: lonely path (negative) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: lonely path (action) NO GREET
+  steps:
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+
+- story: lonely path (report) NO GREET
+  steps:
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: lonely path (none) NO GREET
+  steps:
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+
+- story: lonely path (negative) NO GREET 
+  steps:
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+  #disconnection paths
+
+- story: disconnection path (yes to action - skill and problem) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill no matching problems) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action, no to skills) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (no to action) 
+  steps:
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation
+
+- story: disconnection path (yes to action - skill and problem) NO GREET
+  steps:
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill) NO GREET
+  steps:
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill no matching problems) NO GREET
+  steps:
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action, no to skills) NO GREET 
+  steps:
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (no to action) NO GREET
+  steps:
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation
+
+  #with start
+
+- story: skills and problem start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no problem start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no matching problem start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: action path start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: action_intent
+  - action: store-action-prompt
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (skill and problem) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill no matching problems) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (no skill) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - skill and problem) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill no matching problems) start 
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action, no to skills) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (no to action) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (action) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (action) start 
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (report) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (report) start 
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (none) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (none) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: problem path (negative) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (negative) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: skills and problem NO GREET start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no problem NO GREET start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: skills and no matching problem NO GREET start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: action path NO GREET start
+  steps: 
+  - intent: start
+  - action: initialize_conversation
+  - intent: action_intent
+  - action: store-action-prompt
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (skill and problem) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (only skill no matching problems) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general action path (no skill) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - skill and problem) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action - only skill no matching problems) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (yes to action, no to skills) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: information path (no to action) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: information_intent
+  - action: llama-information
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (action) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (action) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (report) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: general problem path (report) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: problem path (none) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (none) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: problem path (negative) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: general problem path (negative) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: general_problem_intent
+  - action: utter_general_problem
+  - intent: problem_intent
+  - action: store-action-prompt
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: interactive_story_1 start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: general_action_intent
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - slot_was_set:
+    - selected_option: Start/join a group
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+
+- story: interactive_story_2 start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: problem_intent
+  - action: store-action-prompt
+  - slot_was_set:
+    - action_prompt: I need a girl support group for my period
+  - action: llama-problem
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: lonely path (action) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: lonely path (report) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: lonely path (none) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: lonely path (negative) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+- story: lonely path (action) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: take_action_intent
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+
+- story: lonely path (report) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: report_intent
+  - action: report-problem #must take note of person reporting problem and id for later reference
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+  #finish conversation
+
+- story: lonely path (none) NO GREET start 
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: none_intent
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+
+- story: lonely path (negative) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: loneliness_intent
+  - action: store-action-prompt
+  - action: llama-loneliness
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_problem
+  - intent: negative
+  - action: utter_more
+  - intent: negative
+  - action: reset-and-restart
+
+  #disconnection paths
+
+- story: disconnection path (yes to action - skill and problem)  start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill no matching problems) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action, no to skills) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (no to action) start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: greet
+  - action: initialize_conversation
+  - action: utter_greet
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation
+
+- story: disconnection path (yes to action - skill and problem) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: positive
+  - action: llama-action-problem-skill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  - intent: negative
+  - action: llama-action
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action - only skill no matching problems) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: skill_intent
+  - action: store-action-prompt
+  - action: search-problem
+  # - action: llama-action #triggered by follow up
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (yes to action, no to skills) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: positive 
+  - action: utter_skills
+  - intent: no_skills
+  - action: llama-action-noskill
+  - intent: action_option_selected
+  - action: store-selected-action
+  - action: action-handle-selected-option
+  - action: reset-and-restart
+  #finish conversation
+
+- story: disconnection path (no to action) NO GREET start
+  steps:
+  - intent: start
+  - action: initialize_conversation
+  - intent: disconnection_intent
+  - action: llama-disconnection
+  - intent: informed_response_intent
+  - action: handle-llama-informed-response
+  - action: utter_encourage
+  - intent: negative
+  - action: utter_more
+  - intent: negative 
+  - action: reset-and-restart
+    #finish conversation

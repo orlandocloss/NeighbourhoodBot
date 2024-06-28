@@ -1,0 +1,658 @@
+version: "3.1"
+nlu:
+- intent: specific_neighbourhood_intent
+  examples: |
+    - What are the current events happening in my town?
+    - Can you tell me about any upcoming festivals in my area?
+    - Where can I find local community centers?
+    - How many parks are there in my neighborhood?
+    - What are the crime rates like in my area?
+    - Who are the local government representatives for my area?
+    - Are there any local farmer's markets nearby?
+    - What are the nearest hospitals or clinics to my location?
+    - Can you provide information about public transportation in my town?
+    - What are the zoning regulations for residential areas here?
+    - Are there any volunteer opportunities available in my community?
+    - What is the weather forecast for my neighborhood?
+    - Where can I find local sports clubs or leagues?
+    - How can I contact my local council?
+    - What are the local emergency services contact numbers?
+    - Can you give me information on local recycling centers?
+    - Are there any planned roadworks in my area?
+    - What are the noise ordinances in my neighborhood?
+    - Are there any historical landmarks or sites in my town?
+    - What are the public library hours and locations nearby?
+    - What is going on in my community at the moment?
+    - hey chatbot how many people live on my road
+    - what is the population of my area
+    - what is the demographics of my area
+    - how many schools are there
+    - where are the local businesses in my area
+    - Can you tell me about community gardens in my area?
+    - Are there any local groups for community improvement
+
+
+- intent: capabilities_intent
+  examples: |
+    - How would reporting this situation anonymously to my local neighbourhood database help?
+    - Why should I report this incident to the local database
+    - What do you do
+    - How do you work
+    - How does the NeighbourhoodBot improve community engagement?
+    - In what ways can you help with organizing community events?
+    - How do you facilitate communication between neighbors?
+    - What kinds of community issues can you help resolve?
+    - How can you assist with starting local fundraisers?
+    - Can you explain how you link people to solve neighborhood problems?
+    - What are the benefits of using the Neighbourhoods Digital Platform?
+    - How can you help with finding local services?
+    - How do you encourage community action?
+    - Can you assist with creating and managing local petitions?
+    - How do you suggest solutions for community problems?
+    - What steps do you take to connect neighborhood members?
+    - How can you help in promoting local businesses?
+    - What role do you play in supporting local initiatives?
+    - How do you keep the community informed about important updates?
+    - What features do you offer for starting or joining local groups?
+    - How do you ensure privacy when reporting issues?
+    - Can you explain how you manage the neighborhood database?
+    - How do you assist with sharing stories within the community?
+    - What can you do
+
+- intent: gratitude_intent
+  examples: |
+    - ah super useful thank you
+    - thank you
+    - Im grateful
+    - That was really helpful, thank you!
+    - Thanks a lot for the information!
+    - I appreciate your help!
+    - You've been very helpful, thanks!
+    - Thank you for the assistance!
+    - I'm grateful for your support!
+    - Thanks, this is exactly what I needed!
+    - You made things so much easier, thank you!
+    - Appreciate the quick response, thanks!
+    - Your help is much appreciated!
+    - Thanks for the detailed explanation!
+    - This was super helpful, thanks!
+    - I really appreciate your guidance!
+    - Many thanks for your help!
+    - You're a lifesaver, thank you!
+    - Thanks for clarifying that for me!
+    - Your assistance is greatly appreciated!
+    - Thank you, this is very useful!
+    - I'm thankful for your support!
+    - Thanks for the prompt reply!
+
+- intent: start
+  examples: |
+    - /start
+    - /start 
+    - /start 001:JohnDoe
+    - /start 002:orlando
+    - /start 003:alba
+    - /start 004:jonathon
+    - /start 019:michel
+
+- intent: end_conversation
+  examples: |
+    - end conversation
+    - end
+    - I want to end this conversation
+    - goodbye
+    - I want to finish this chat
+    - I dont want to speak to you anymore
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hola
+- intent: positive
+  examples: |
+    - yes
+    - sure
+    - absolutely
+    - definitely
+    - of course
+    - indeed
+    - right
+    - correct
+    - yup
+    - yep
+    - yeah
+    - affirmative
+    - sounds good
+    - that's right
+    - count me in
+    - I agree
+- intent: negative
+  examples: |
+    - no
+    - no way
+    - not at all
+    - absolutely not
+    - definitely not
+    - nope
+    - nah
+    - not happening
+    - never
+    - I disagree
+    - not a chance
+    - I don't think so
+    - not likely
+    - no thanks
+    - not in a million years
+- intent: information_intent
+  examples: |
+    - What activities can improve our neighborhood?
+    - What are the benefits of community service?
+    - Where can I find information about community centers?
+    - How do I start a neighborhood watch program?
+    - Where can I donate clothes in my community?
+    - How can I support local businesses?
+    - What initiatives help with community clean-ups
+    - How to organize a community fundraiser?
+    - Can you suggest ways to engage with my community online?
+    - What are effective methods to raise community awareness?
+    - How do I promote cultural events in my area
+    - What platforms can I use to discuss community issues?
+    - How to create a community support network
+    - What are common challenges in building community relations?
+    - How to encourage youth participation in the community?
+    - Are there mentorship programs in my neighborhood?
+    - How can we address homelessness in our community
+    - What are some community-led environmental initiatives?
+    - How to improve public spaces in my neighborhood?
+    - Can I volunteer for local educational programs
+    - What are the steps to organize a community meeting?
+    - How to advocate for more green spaces in urban areas?
+    - Are there any community health awareness programs?
+    - How do I find out about community development projects?
+    - What resources are available for community leaders
+    - How can art contribute to community building
+    - What are ways to celebrate diversity in our community?
+    - How do I contribute to making community events more inclusive?
+    - What activites are available in my community?
+
+- intent: general_problem_intent
+  examples: |
+    - I want to report a problem in my area
+    - I want to report a problem
+    - There's an issue that needs attention
+    - I've noticed a problem that should be reported
+    - How can I report a concern I have?
+    - I need to let someone know about an issue
+    - There's a situation that requires intervention
+    - I've come across a problem that needs solving
+    - How do I go about reporting an issue?
+    - I want to bring a certain matter to light
+    - There seems to be a problem that needs looking into
+    - I have a concern that needs to be addressed
+    - There's a recurring issue in my area
+    - I need to report something that's been bothering me
+    - How can I inform you about a problem?
+    - I wish to report a concern that affects us all
+    - There's a general problem that needs fixing
+    - I've identified a problem that requires attention
+    - Who can I talk to about a problem here?
+    - I need guidance on how to report an issue
+    - I've encountered an issue worth mentioning
+    - How do I notify you about a general problem?
+    - There's something wrong that needs to be reported
+    - I want to alert you to an ongoing issue
+    - How can I submit a report on a problem?
+    - I've come to report a problem I've observed
+    - There's an issue that's been on my mind
+    - I believe there's a problem that needs investigation
+    - How can I bring up a problem for discussion?
+    - I've noticed something that should be reported
+    - There's a general issue I want to report
+    - I need to make a report on a certain issue
+    - What is the process for reporting issues through you?
+- intent: problem_intent
+  examples: |
+    - It is too noisy in my area
+    - Street lights are out on my block
+    - Vandalism has increased in our park
+    - There's a pothole on Main Street
+    - The local library hours are too limited
+    - We need more recycling bins in our area
+    - The playground equipment is unsafe
+    - There's a stray dog problem in our neighborhood
+    - Graffiti is covering the pedestrian bridge
+    - Public transportation is inadequate here
+    - We're lacking community gathering spaces
+    - The river walk is littered with trash
+    - Noise pollution from the construction site is unbearable
+    - There are no bike lanes in my area
+    - The community garden needs more maintenance
+    - Air quality has worsened recently
+    - There's a lack of accessible facilities for the disabled
+    - Speeding cars make our streets unsafe
+    - The community pool is always dirty
+    - There's nowhere to safely walk my dog
+    - Abandoned houses are becoming an eyesore
+    - The local market is closing down
+    - We're missing a youth center for teenagers
+    - Public art is being neglected
+    - The bus stop shelter has been damaged
+    - There's a water leakage in the public park
+    - The elderly don't have enough support services
+    - Local businesses are suffering from lack of traffic
+    - The public restrooms are always locked
+    - We need better lighting in our alleyways
+    - The community bulletin board is outdated
+    - Public transportation doesn't adequately serve all community areas
+    - There's a need for more tree planting and green initiatives in our area
+    - Community awareness about emergency preparedness is low
+    - Local water bodies are littered and need cleanup
+    - Our community lacks engagement in local governance and decision-making
+    - There's a gap in educational support for disadvantaged children
+    - A lack of safe, designated areas for pets to play and exercise
+    - We need a community initiative to support and mentor local startups
+    - Our neighborhood doesn't have a local market for fresh produce
+    - The absence of a regular community cleanup effort leads to littered streets
+    - There's no local initiative to promote and support public art
+    - A lack of programs addressing the digital divide in our community
+    - Our community lacks accessible fitness and wellness programs
+    - There's a need for a local exchange to swap goods and reduce waste
+    - Outdoor recreational areas are not well-maintained, deterring use
+    - Our neighborhood lacks cultural festivals to bring the community together
+    - Public spaces aren't equipped with enough seating and shade
+    - The local pond is overrun with algae, making it unusable
+    - There's no initiative to address noise pollution in residential areas
+    - Our community lacks a program for the safe disposal of hazardous household waste
+    - There's a need for more inclusive playgrounds for children of all abilities
+    - Local historical sites are not being maintained or promoted
+    - There's a significant need for job training and placement programs in our area
+    - Our community's youth are in need of more educational and recreational activities
+    - Residents feel disconnected from local government decisions and policies
+    - I'm scared in my neighbourhood
+    - there are many potholes in my neighbourhood
+    - I don't like the architecture in my neighbourhood
+    - I don't want so many festivals here
+    - I'm annoyed by people hanging outside my house
+    - I hate people
+    - I thought about at problem, there are not enough potable water fountains in my area 
+    - I hear my neighbors fighting and screaming at night. What can I do about it? The police didn’t do anythin
+
+- intent: loneliness_intent
+  examples: |
+    - I am struggling with grief and need a support group.
+    - I am lonely
+    - I am struggling with loneliness
+    - I feel so alone
+    - No one seems to understand me
+    - I have no one to talk to
+    - I'm looking for someone to share my feelings with
+    - I feel isolated
+    - I am feeling very lonely
+    - I need someone to talk to
+    - I feel abandoned
+    - I wish I had someone to talk to
+    - I am feeling very alone
+    - I am looking for a support group for lonely people
+    - I need help dealing with loneliness
+    - I am searching for ways to cope with loneliness
+    - I need companionship
+
+- intent: disconnection_intent
+  examples: |
+    - Why is there a lack of community in the modern age
+    - I feel disconnected from my community
+    - Why do we need to develop community
+    - I don't like my neighbourhood
+    - I feel isolated in my neighborhood
+    - Why do people not engage with their community
+    - How can we improve community engagement
+    - What are the causes of community disconnection
+    - Why are modern communities so disconnected
+    - How can we build stronger community ties
+    - I feel like I don't belong in my neighborhood
+    - What are the effects of community disconnection
+    - How can I get more involved in my community
+    - Why do people not know their neighbors anymore
+    - What can be done to foster a sense of community
+    - How can neighborhoods become more connected
+    - I feel like my neighborhood is very fragmented
+    - What are the benefits of a strong community
+    - How can we combat community disconnection
+    - Why is it important to have a connected community
+    - Tell me about the importance of connectedness
+    - I want my children to be more connected with the children in my neighbourhood?
+    
+- intent: action_intent
+  examples: |
+    - How can I volunteer for local events?
+    - I'm interested in organizing a community meeting
+    - I'd like to participate in a neighborhood watch
+    - How do I start a community garden?
+    - I want to join a recycling program
+    - Can I help at the local food bank?
+    - I'm looking to mentor youth in my community
+    - How to initiate a community art project?
+    - I want to support local businesses, what can I do?
+    - How can I help with tutoring services in my area?
+    - Is there a way to support seniors in my neighborhood?
+    - I'd like to lead a fitness class in the park
+    - How can I contribute to local wildlife conservation?
+    - I want to help improve public spaces
+    - How to organize a charity event for a local cause?
+    - I'm interested in leading a community cleanup
+    - How can I advocate for bike lanes in my area?
+    - I want to create a support group for parents
+    - How do I get involved with local policy making?
+    - I'd like to help with disaster preparedness in my community
+    - Can I assist in renovating public facilities?
+    - I want to organize a book club at the library
+    - How can I support homeless shelters in my area?
+    - I'm looking to start a community newsletter
+    - I want to help in reducing noise pollution
+    - Can I lead an initiative on water conservation?
+    - I'm interested in creating a local history project
+    - How can I assist with animal rescue efforts locally?
+    - I want to promote renewable energy within my community
+    - I want to start a local book exchange
+    - Organizing a workshop on sustainable living
+    - Setting up a neighborhood carpool system
+    - Launching a community fitness challenge
+    - Creating a local history walking tour
+    - Initiating a community-supported agriculture (CSA) program
+    - Developing a workshop for DIY home repairs
+    - Planning a series of outdoor movie nights
+    - Establishing a community emergency preparedness group
+    - Forming a support network for new parents
+    - Building a platform for local artists to showcase their work
+    - Organizing a technology recycling drive
+    - Starting a community dialogue series on diversity and inclusion
+    - Creating a neighborhood beautification project
+    - Launching a mentorship program for high school students
+    - Setting up a local makerspace for creatives and inventors
+    - I am looking for a good nutritionist in the area.
+    - I am searching for local addiction recovery meetings.
+    - I want to buy organic vegetables.
+    - I need advice on natural remedies for insomnia.
+    - I need a girl support group for my period
+    - I am tired of eating processed food
+    - I need a support group for coping with anxiety.
+    - I am looking for parenting advice for children with ADHD.
+    - I need help in looking for a club to join
+    - I need to start a football club but don't know how
+    - I need help playing guitar
+    - I want help connecting with people
+    - I need someone to help clean my home
+    - I want to meet new people
+    - I need to find a community
+    - I need to find a local depression support group.
+    - I need someone to play with
+    - I need someone to have fun with
+    - I need someone to play tennis with 
+    - I would like to build a community garden. How should I approach the process, where should I start?
+    - I need help formulating a formal email to the local authorities asking for approval for my garden.
+    - MY local community garden needs volunteers, however nobody seem to be interested. How can I popularize my garden to involve more people?
+    - I would like to launch a social media campaign, by creating a unified graphical design for the garden, however I am not an illustrator, nor do I have the money to employ one. Do you have any recommendations for tools to generate pictures using AI? 
+    - how can i put pressure in the city hall for the fountains to be installed before the summer?
+    - I want to organize a neighborhood cleanup, but I'm struggling to get enough volunteers. What are some effective ways to recruit more people?
+    - I'm planning to start a community book club and need help with promotion. What are some strategies to attract members?
+    - I want to organize a charity run in my neighborhood but don't know how to start. Can you provide some advice on planning this event?
+    - I'm looking to improve our community recycling program but need more participation. What are some strategies to encourage more residents to recycle?
+    - I have created a community garden, to mobilize and bring people together in my neighborhood. However recently a group of teenagers have vandalized the garden multiple times. This leaves us with monetary troubles while also bringing down morale. Do you have any suggestions how to handle the situation?
+    - I like the social media idea, I would like to create a unified graphical design for the garden, however I am not an illustrator, nor do I have the money to employ one. Do you have any recommendations how to overcome this issue?
+    - hey chatbot what should i do if my neighbour keeps parking in front of my house
+    - I have some extra money I want to invest in public education, can you guide me through some steps
+- intent: general_action_intent
+  examples: |
+    - I want to take action
+    - Let me know how I can be of use
+    - I want to make a positive impact
+    - I'm interested in doing something positive
+    - How can I get involved with community efforts?
+    - I'd like to offer my help for any cause
+    - Show me opportunities to take action
+    - I feel motivated to help out somehow
+    - What can I do to assist?
+    - I'm looking to contribute to a project
+    - Is there a way I can make a difference?
+    - I want to participate in an action
+    - Lead me to some action I can take
+    - I'm keen on taking some initiative
+    - Point me towards some volunteer work
+    - I'm ready to step up and help
+    - I want to engage in some activities
+    - How can I join in the efforts?
+    - I'm eager to lend a hand
+    - What actions can I take to help?
+    - I'm interested in making an impact
+    - Can I support any ongoing actions?
+    - I'm looking for a way to contribute
+    - How can I be part of the solution?
+    - I want to do something meaningful
+    - Show me how to get involved
+    - What can I do to support the cause?
+    - I'm ready to offer assistance
+    - I want to take part in something big
+    - How can I help with your projects?
+    - I'm interested in community work
+    - I have a lot if free time what can I do
+    - I have a lot of free time, what can I do?
+    - I'm enthusiastic about taking some action
+    - Direct me to any volunteer opportunities
+    - I'm prepared to contribute and assist
+    - I'd like to participate in activities
+    - How can I get involved in your initiatives?
+    - I'm eager to offer my support
+    - What steps can I take to assist?
+    - I'm keen to make a difference
+    - Can I help with any current projects?
+    - I'm seeking ways to contribute my time
+    - How can I engage in your efforts?
+    - I'm passionate about doing something impactful
+    - Guide me on how to get involved
+    - What can I do to aid the cause?
+    - I'm ready to provide my help
+    - I want to be involved in a significant effort
+    - How can I support your projects?
+    - I'm interested in engaging in community service
+    - I have spare time, how can I help?
+    - I'm willing to offer my time and effort
+    - Point me in the direction of any assistance needed
+    - I'd love to join your volunteer team
+    - How can I assist with the ongoing efforts?
+    - I'm motivated to help out
+    - What actions can I take to support your cause?
+    - I want to be a part of the solution
+    - I'm driven to help in any way I can
+    - Can you show me how to get started with volunteering?
+    - I'm looking to participate in something meaningful
+    - How can I contribute to your mission?
+    - I'm ready to dedicate my time to help
+    - I want to be part of your community initiatives
+    - How can I engage in helping the community?
+    - I'm looking for volunteer work to get involved in
+    - Show me the ways I can assist
+    - I want to take proactive steps to help
+    - How can I offer my support to your projects?
+    - I'm interested in being part of positive change
+    - What opportunities are there for me to help out?
+    - How can I be of service to the community?
+    - I'm looking for ways to make a difference
+    - How can I become a part of the volunteer team?
+    - I'm committed to helping out in any way possible
+    - What can I do to assist in making a positive impact?
+    - I'm excited to help with community projects
+    - How can I get started with contributing my time?
+    - What sort of problems are people having
+    - what problems are in the database
+    - whos in need to help
+    - search the database
+    - whos struggling in my neighbourhood
+    - wanna help someone out
+- intent: report_intent
+  examples: |
+    - I want to report
+    - report
+- intent: take_action_intent
+  examples: |
+    - take action
+    - lets help
+    - help
+    - take action yourself
+    - take action myself
+    - work on a solution
+    - solution
+- intent: none_intent
+  examples: |
+    - neither
+    - none
+    - I don't want to do either
+    - not interested
+    - nothing for me
+    - none of these
+    - i dont want any of these options
+    - neither
+- intent: action_option_selected
+  examples: |
+    - Start/join a group
+    - Start a petition
+    - Start a fundraiser
+    - Start a freelance/ solo venture
+    - Start an event
+    - Share a story
+    - Seek further expertise
+    - Share a post
+- intent: skill_intent
+  examples: |
+    - I can knit
+    - I'm very good at gardening
+    - I can code
+    - I can offer legal advice for community issues
+    - I'm a professional chef willing to teach cooking classes
+    - I have experience in event planning, how can I help?
+    - I'm an artist looking to beautify public spaces
+    - I'm skilled in driving
+    - I enjoy talking to people
+    - I can play the guitar
+    - I'm good at painting
+    - I love cooking for others
+    - Baking is my passion
+    - Photography is a hobby of mine
+    - Writing is something I do in my free time
+    - Carpentry work is my expertise
+    - I can handle electrical work
+    - Plumbing is something I'm good at
+    - Teaching is my profession
+    - I coach sports in my spare time
+    - I can organize and declutter spaces efficiently
+    - I'm experienced in renewable energy solutions
+    - I have a knack for interior design
+    - My passion is creating educational content for children
+    - I'm a skilled mechanic and can teach basic car maintenance
+    - I can lead workshops on personal finance management
+    - My strength is in building and maintaining community gardens
+    - I'm proficient in several programming languages
+    - I have experience in grant writing for nonprofits
+    - I can teach sign language to individuals or groups
+    - I'm a trained mediator and can help resolve conflicts
+    - I can offer photography lessons for beginners
+    - I'm good at cooking vegan meals and can host cooking classes
+    - I can provide basic veterinary advice for pet owners
+    - I'm an experienced public speaker and can offer coaching
+    - I can lead creative writing workshops
+    - I have expertise in historical research and can give lectures
+    - I'm good at organizing community clean-up events
+    - I can teach chess to children and adults
+    - I'm experienced in mural painting and can lead public art projects
+    - I'm proficient in graphic design and can offer branding advice
+    - I enjoy crafting and can lead workshops on making handmade gifts
+    - I'm a skilled baker and can demonstrate advanced baking techniques
+    - I have expertise in yoga and can conduct wellness workshops
+    - I'm knowledgeable about sustainable living practices
+    - I can teach DIY home improvement projects
+    - I'm an amateur astronomer and can organize stargazing nights
+    - I excel at digital marketing and can help local businesses grow online
+    - I'm a passionate environmental activist and can lead conservation efforts
+    - I have a green thumb and can offer gardening consultations
+    - I'm an experienced cyclist and can lead community bike rides
+    - I'm skilled at sewing and can teach clothing repair workshops
+    - I can offer guidance on setting up home solar panels
+    - I'm a professional dancer and can offer dance classes
+    - I enjoy historical reenactment and can organize community events
+    - I'm proficient in first aid and can conduct safety training sessions
+    - I have expertise in mobile app development and can mentor aspiring developers
+    - I'm experienced in woodworking and can teach furniture making
+    - I'm knowledgeable in nutrition and can offer healthy eating workshops
+    - I can lead mindfulness and meditation sessions for stress relief
+    - I'm a trained lifeguard and can offer swimming lessons
+    - I have experience in beekeeping and can lead informational sessions
+    - I'm a skilled videographer and can teach video editing
+    - I enjoy birdwatching and can lead nature walks
+    - I'm experienced in preserving and canning food and can teach others
+    - I'm a skilled skateboarder and can offer skateboarding lessons
+    - I can provide career counseling for young adults
+    - I'm knowledgeable in antique restoration and can offer workshops
+    - I have experience in stage management and can offer theater production workshops
+    - I'm a professional sound engineer and can teach sound mixing
+    - I'm fluent in multiple languages and can offer language tutoring
+    - I enjoy geocaching and can organize community geocaching events
+    - I'm an experienced camp counselor and can lead outdoor adventure camps
+    - I have expertise in aquaponics and can set up sustainable food systems
+    - I'm passionate about comic book art and can lead comic creation workshops
+    - I'm a certified fitness instructor and can lead group fitness classes
+    - I enjoy making jewelry and can teach jewelry making workshops
+    - I'm experienced in making natural beauty products and can lead workshops
+    - I can teach basic robotics to kids and teens
+    - I'm knowledgeable about local flora and fauna and can lead nature education walks
+    - I like programming
+    - I like gardening
+    - I enjoy hiking
+    - I love reading books
+    - I'm passionate about painting
+    - I enjoy cooking new recipes
+    - I'm a fan of woodworking
+    - I like to play the piano
+    - I enjoy learning new languages
+    - I love cycling
+    - I like practicing yoga
+    - I'm interested in astronomy
+    - I enjoy playing chess
+    - I love photography
+    - I'm a fan of knitting
+    - I like doing puzzles
+    - I like to fish
+    - I like to play football
+    - I like to run
+    - I like to read
+    - I like to meet people
+    - I like fun
+    - I like food
+    - I like to cook
+    - Speaking to older people, playing chess, gardening
+    - i’m empathetic, i understand people with low resources, im understanding i’m social, I don’t like private schools, I like outdoors, and I like dancing
+    - I'm passionate about cooking and love trying new recipes
+    - I like interacting with older adults, playing strategic games like chess, and nurturing plants in my garden.
+    - Software development 
+    - I have money 
+    - Tennis
+    - Board games
+    
+
+- intent: no_skills
+  examples: |
+    - don't like anything
+    - I have no skills
+    - I have no interests
+    - not interested or skilled in anything
+    - I'm not skilled
+    - I'm not interested in anything particularly

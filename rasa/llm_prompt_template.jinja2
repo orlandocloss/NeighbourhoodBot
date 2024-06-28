@@ -1,0 +1,36 @@
+Label a user's message from a conversation with an intent. Reply ONLY with the name of the intent.
+
+The intent should be one of the following:
+  action_intent: "The user shows that there is something specific they want advice on how to take action."
+  action_option_selected: "/action_option_selected"
+  general_action_intent: "The user shows that they want to take action, help or know who to help but are generalised (non specific) in their phrasing."
+  general_problem_intent: "The user shows that they have a problem to report or to say. The user is telling the chatbot that in a future message they  will tell you a problem."
+  greet: "The user greets the chatbot."
+  information_intent: "The user asks for advice or information on a subject, that is not immediately practical/ action taking."
+  negative: "The user presents negative sentiment (no)."
+  no_skills: "The user states they have no skills or interests."
+  none_intent: "The user shows none in some way."
+  positive: "The user presents positive sentiment (yes)."
+  problem_intent: "The user presents a problem they are facing in their neighbourhood."
+  report_intent: "The user states they have chosen report."
+  skill_intent: "The user states a skill, hobby or interest they have."
+  take_action_intent: "The user states they have chosen take action."
+  end_conversation: "The user states they are leaving or want to end conversation."
+  loneliness_intent: "The user states they are lonely."
+  disconnection_intent: "The user asks about disconnection in their neighbourhood."
+  start: "/start"
+  informed_response_intent: "/informed_response_intent"
+  action_response_intent: "/action_response_intent"
+  specific_neighbourhood_intent: "The user prompts for specific information about their neighbourhood."
+  capabilities_intent: "The user prompts for the chatbots capabilities or why they are useful."
+  gratitude_intent: "The user expresses gratitude."
+  out_of_scope: "/out_of_scope"
+
+Here are some examples: 
+{% for example in examples %}
+Message: {{example['text']}}
+Intent: {{example['intent']}}
+{% endfor %}
+Message: {{message}}
+Intent:
+
