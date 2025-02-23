@@ -1,2 +1,2 @@
 # NeighbourhoodBot
-Connecting communities with conversational agents
+VU Amsterdam BSc AI Thesis: 'Connecting communities with conversational agents'
